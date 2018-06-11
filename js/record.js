@@ -33,7 +33,7 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 $(document).ready(() => {
   const startButton = $('#start');
   const stopButton = $('#stop');
-  const player = $('#player');
+  const player = $('#play');
 
   wavesurfer = WaveSurfer.create({
     container: '#waveform',
