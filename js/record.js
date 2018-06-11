@@ -28,31 +28,37 @@ const recordAudio = () =>
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
-let recorder;
+$(document).ready(() => {
+  const startButton = $('#start');
+  const stopButton = $('#stop');
+  const downloadLink = $('#download');
+  const player = $('#player');
 
-async function startRecord() {
-    recorder = await recordAudio();
+  var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+  });
 
-    $('.record').hide();
-    $('.stop').show();
+  recordAudio().then(recorder => {
+    startButton.on('click', (() => {
+      recorder.start();
+      startButton.hide();
+      stopButton.show();
+    }));
+    stopButton.on('click', (() => {
+      recorder.stop().then(audio => {
+        stopButton.hide();
 
-    recorder.start();
-}
+        downloadLink.attr('href', audio.audioUrl);
+		    downloadLink.attr('download', 'treinamento.wav');
+        downloadLink.show();
 
+        player.attr("src", audio.audioUrl);
+        player.show();
 
-async function stopRecord() {
-    const audio = await recorder.stop();
-
-    $('.record').show();
-    $('.stop').hide();
-
-    audio.play();
-}
-
-/*(async () => {
-  const recorder = await recordAudio();
-  recorder.start();
-  await sleep(3000);
-  const audio = await recorder.stop();
-  audio.play();
-})();*/
+        wavesurfer.load(audio.audioUrl);
+      });
+    }));
+  });
+});
