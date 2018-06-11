@@ -31,7 +31,6 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 $(document).ready(() => {
   const startButton = $('#start');
   const stopButton = $('#stop');
-  const downloadLink = $('#download');
   const player = $('#player');
 
   var wavesurfer = WaveSurfer.create({
@@ -49,10 +48,6 @@ $(document).ready(() => {
     stopButton.on('click', (() => {
       recorder.stop().then(audio => {
         stopButton.hide();
-
-        downloadLink.attr('href', audio.audioUrl);
-		    downloadLink.attr('download', 'treinamento.wav');
-        downloadLink.show();
 
         player.attr("src", audio.audioUrl);
         player.show();
