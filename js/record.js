@@ -4,9 +4,10 @@ const recordAudio = () =>
   new Promise(async resolve => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     const mediaRecorder = new MediaRecorder(stream);
-    const audioChunks = [];
+    var audioChunks = [];
 
     mediaRecorder.addEventListener("dataavailable", event => {
+      audioChunks = [];
       audioChunks.push(event.data);
     });
 
@@ -34,6 +35,7 @@ $(document).ready(() => {
   const startButton = $('#start');
   const stopButton = $('#stop');
   const player = $('#play');
+  const gravacoes = [];
 
   wavesurfer = WaveSurfer.create({
     container: '#waveform',
@@ -51,10 +53,14 @@ $(document).ready(() => {
       recorder.stop().then(audio => {
         stopButton.hide();
 
+        gravacoes.push(audio);
+
         player.attr("src", audio.audioUrl);
         player.show();
 
         wavesurfer.load(audio.audioUrl);
+
+        startButton.show();
       });
     }));
   });
