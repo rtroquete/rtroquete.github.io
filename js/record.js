@@ -1,3 +1,5 @@
+let wavesurfer;
+
 const recordAudio = () =>
   new Promise(async resolve => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -34,7 +36,7 @@ $(document).ready(() => {
   const downloadLink = $('#download');
   const player = $('#player');
 
-  var wavesurfer = WaveSurfer.create({
+  wavesurfer = WaveSurfer.create({
     container: '#waveform',
     waveColor: 'violet',
     progressColor: 'purple'
