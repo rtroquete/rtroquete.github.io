@@ -49,7 +49,7 @@ const createAudio = ((audio) => {
         audio.play();
       })
       .end()
-      .find('a.secondary-content').click((evt) => { 
+      .find('[data-remove-audio]').click((evt) => { 
         console.debug('deletar', evt, $(evt.target).parent().parent()); 
         const li = $(evt.target).parent().parent().parent();
         wavesurfer.empty();
