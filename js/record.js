@@ -35,7 +35,8 @@ const createAudio = ((audio) => {
   $(`<li data-audio-url="${audio.audioUrl}" data-audio-id="${gravacoes.length - 1}" class="collection-item avatar">
   <i class="material-icons circle blue">play_arrow</i><span></span>
       <p><span class="title">${gravacoes.length}) Treino</span>
-      <a href="#!" class="secondary-content"><i class="material-icons ico-darkred">remove_circle_outline</i>
+      <a href="#" data-send-audio class="secondary-content"><i class="material-icons ico-darkred">send</i>
+      <a href="#!" data-remove-audio class="secondary-content"><i class="material-icons ico-darkred">remove_circle_outline</i>
       </a>
       </p>
       </li>`)
