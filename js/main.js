@@ -112,4 +112,21 @@ $(function () {
         Trainning.createView();
         $(".sidenav").sidenav('close');
     });
+
+    $("[data-send-audio]").on("click", function () {
+        const id = $(this).parent().parent().data("audio-id");
+        
+        gravacoes.splice(id, 1);
+        $(this).parent().parent().remove();
+        
+        alert(`Treinamento ${id} enviado.`);
+    });
+
+
+    $("[data-remove-audio").on("click", function () {
+        const id = $(this).parent().parent().data("audio-id");
+        
+        gravacoes.splice(id, 1);
+        $(this).parent().parent().remove();
+    });
 });
