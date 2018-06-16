@@ -58,7 +58,7 @@ const createAudio = ((audio) => {
       })
       .end()
       .find('[data-send-audio]').click((evt) => {
-        const li = $(this).parent().parent();
+        const li = $(evt.target).parent().parent().parent();
         const id = li.data("audio-id");
 
         e.preventDefault();
