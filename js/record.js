@@ -50,11 +50,22 @@ const createAudio = ((audio) => {
       })
       .end()
       .find('[data-remove-audio]').click((evt) => { 
-        console.debug('deletar', evt, $(evt.target).parent().parent()); 
+        //console.debug('deletar', evt, $(evt.target).parent().parent()); 
         const li = $(evt.target).parent().parent().parent();
         wavesurfer.empty();
         $('#play').hide();
         li.hide();
+      })
+      .end()
+      .find('[data-send-audio]').click((evt) => {
+        const li = $(this).parent().parent();
+        const id = li.data("audio-id");
+
+        e.preventDefault();
+        gravacoes.splice(id, 1);
+        li.remove();
+    
+        alert(`Treinamento ${id} enviado.`);
       })
       .end()
       .appendTo('#listartreinos ul.collection');
