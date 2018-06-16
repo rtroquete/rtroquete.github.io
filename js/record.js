@@ -62,9 +62,7 @@ const createAudio = ((audio) => {
         const id = li.data("audio-id");
 
         gravacoes.splice(id, 1);
-        li.remove();
-    
-        alert(`Treinamento ${id} enviado.`);
+        li.html(`<p>Treinamento ${id} enviado.</p>`);
       })
       .end()
       .appendTo('#listartreinos ul.collection');
