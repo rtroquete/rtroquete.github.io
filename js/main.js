@@ -113,19 +113,20 @@ $(function () {
         $(".sidenav").sidenav('close');
     });
 
-    $("[data-send-audio]").on("click", function () {
+    $("[data-send-audio]").on("click", function (e) {
         const id = $(this).parent().parent().data("audio-id");
         
-        gravacoes.splice(id, 1);
-        $(this).parent().parent().remove();
-        
+        e.preventDefault();        
+        gravacoes.splice(id, 1);        
+        $(this).parent().parent().remove();        
         alert(`Treinamento ${id} enviado.`);
     });
 
 
-    $("[data-remove-audio").on("click", function () {
+    $("[data-remove-audio").on("click", function (e) {
         const id = $(this).parent().parent().data("audio-id");
         
+        e.preventDefault();
         gravacoes.splice(id, 1);
         $(this).parent().parent().remove();
     });
