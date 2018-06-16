@@ -61,7 +61,6 @@ const createAudio = ((audio) => {
         const li = $(evt.target).parent().parent().parent();
         const id = li.data("audio-id");
 
-        e.preventDefault();
         gravacoes.splice(id, 1);
         li.remove();
     
